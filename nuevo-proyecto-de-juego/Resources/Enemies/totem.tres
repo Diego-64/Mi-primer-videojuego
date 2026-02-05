@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://cpclkohdgs17k"]
+
+[ext_resource type="Script" uid="uid://ckbk424xich7n" path="res://EnemyType.gd" id="1_mfvav"]
+[ext_resource type="Texture2D" uid="uid://ngbvbt3fgi2v" path="res://image-2-1.png" id="2_wflrb"]
+
+[resource]
+script = ExtResource("1_mfvav")
+title = "Totem"
+texture = ExtResource("2_wflrb")
+health = 15.0
+damage = 1.0
+metadata/_custom_type_script = "uid://ckbk424xich7n"

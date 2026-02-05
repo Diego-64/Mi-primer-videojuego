@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SingleShoot" format=3 uid="uid://dqkdqo747nocb"]
+
+[ext_resource type="PackedScene" uid="uid://bpduc4lwmudk6" path="res://projectile.tscn" id="1_ybuxr"]
+[ext_resource type="Script" uid="uid://ct4du4rm66o7s" path="res://SingleShoot.gd" id="2_1t77d"]
+[ext_resource type="Texture2D" uid="uid://b0n7co57upqnm" path="res://noFilter.webp" id="3_75vsn"]
+
+[resource]
+script = ExtResource("2_1t77d")
+title = "Guitar"
+texture = ExtResource("3_75vsn")
+damage = 1.0
+cooldown = 1.0
+speed = 400.0
+metadata/_custom_type_script = "uid://ct4du4rm66o7s"

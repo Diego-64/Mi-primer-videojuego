@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c2w0u77lsm77j"]
+
+[ext_resource type="Script" uid="uid://b0shvvsmcc2op" path="res://slot.gd" id="1_c24ra"]
+
+[node name="Slot" type="PanelContainer" unique_id=696706586]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_c24ra")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=132321130]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cooldown" type="Timer" parent="." unique_id=1460274595]
+autostart = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

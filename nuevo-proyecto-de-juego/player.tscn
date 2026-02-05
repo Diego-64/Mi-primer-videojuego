@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cpsaxvvwqv80r"]
+
+[ext_resource type="Script" uid="uid://dt7hi11wti1t5" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://c2w0u77lsm77j" path="res://slot.tscn" id="2_i3pqv"]
+[ext_resource type="Resource" uid="uid://dqkdqo747nocb" path="res://Resources/Weapon/Guitar.tres" id="3_hqtel"]
+[ext_resource type="Texture2D" uid="uid://cs2ultc6072o1" path="res://bonniepng.png" id="4_hqtel"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1753686570]
+script = ExtResource("1_4flbx")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1085624364]
+
+[node name="Weapons" type="HBoxContainer" parent="UI" unique_id=598971203]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Slot" parent="UI/Weapons" unique_id=696706586 instance=ExtResource("2_i3pqv")]
+layout_mode = 2
+weapon = ExtResource("3_hqtel")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1237199682]
+position = Vector2(-1.0000076, -1)
+scale = Vector2(0.412, 0.356)
+texture = ExtResource("4_hqtel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2104259484]
+shape = SubResource("RectangleShape2D_i3pqv")
+
+[node name="SelfDamage" type="Area2D" parent="." unique_id=2061842365]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Collision" type="CollisionShape2D" parent="SelfDamage" unique_id=1743088265]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_4flbx")
+
+[node name="Health" type="ProgressBar" parent="." unique_id=744006488]
+unique_name_in_owner = true
+offset_left = -17.0
+offset_top = -56.0
+offset_right = 18.0
+offset_bottom = -45.0
+value = 100.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="." unique_id=1367530533]
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1757027924]
+
+[connection signal="body_entered" from="SelfDamage" to="." method="_on_self_damage_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

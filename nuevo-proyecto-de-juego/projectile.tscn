@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bpduc4lwmudk6"]
+
+[ext_resource type="Script" uid="uid://dvgr1t4kcdt30" path="res://projectile.gd" id="1_a85iw"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_akgne"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a85iw"]
+size = Vector2(10, 10)
+
+[sub_resource type="Gradient" id="Gradient_a85iw"]
+colors = PackedColorArray(0.960356, 0.06509707, 0.012809199, 1, 0.8139273, 0.89459085, 0.10018137, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qxf0c"]
+gradient = SubResource("Gradient_a85iw")
+
+[sub_resource type="Curve" id="Curve_dgwo2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sxmqc"]
+curve = SubResource("Curve_dgwo2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a85iw"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = -10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_sxmqc")
+color_ramp = SubResource("GradientTexture1D_qxf0c")
+turbulence_enabled = true
+turbulence_noise_speed = Vector3(0, 1, 0)
+turbulence_influence_max = 0.29200003
+
+[node name="Projectile" type="Area2D" unique_id=869611323]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_a85iw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1510436681]
+texture = SubResource("PlaceholderTexture2D_akgne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1377487047]
+shape = SubResource("RectangleShape2D_a85iw")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1309430465]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=587782967]
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_a85iw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
