@@ -8,7 +8,7 @@
 script = ExtResource("2_1t77d")
 title = "Guitar"
 texture = ExtResource("3_75vsn")
-damage = 1.0
-cooldown = 1.0
+damage = 5.0
+cooldown = 0.75
 speed = 400.0
 metadata/_custom_type_script = "uid://ct4du4rm66o7s"
