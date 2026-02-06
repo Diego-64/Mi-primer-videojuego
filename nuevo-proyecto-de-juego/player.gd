@@ -5,6 +5,8 @@ var health : float = 100:
 	set(value):
 		health = value
 		%Health.value = value
+		if health <= 0:
+			morir()
 
 var is_dashing : bool = false
 var dash_speed : float = 400
@@ -45,6 +47,11 @@ func take_damage(amount):
 	health -= amount
 	print(amount)
 
+func morir():
+	# Detiene el tiempo y la física de todo el árbol de escenas
+	get_tree().paused = true 
+	print("El jugador ha muerto. Juego detenido.")
+	
 func _on_self_damage_body_entered(body):
 	take_damage(body.damage)
 
