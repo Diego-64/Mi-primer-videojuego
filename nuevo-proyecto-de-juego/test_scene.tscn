@@ -1,16 +1,9 @@
 [gd_scene format=4 uid="uid://cbhqepnqckllf"]
 
+[ext_resource type="Script" uid="uid://cu5iu7uah2hbe" path="res://test_scene.gd" id="1_coq8p"]
 [ext_resource type="PackedScene" uid="uid://dulpjm0wi54su" path="res://spawner.tscn" id="1_ia1lp"]
 [ext_resource type="Texture2D" uid="uid://cj7m663qwwyl3" path="res://kenney_abstract-platformer/Tilesheet/tilesheet_complete.png" id="1_sasra"]
 [ext_resource type="PackedScene" uid="uid://cpsaxvvwqv80r" path="res://player.tscn" id="1_uhqqe"]
-
-[sub_resource type="GDScript" id="GDScript_sasra"]
-script/source = "extends Node2D
-
-func _on_player_health_depleted():
-	%GameOver.visible = true
-	get_tree().paused = true
-"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_coq8p"]
 texture = ExtResource("1_sasra")
@@ -23,7 +16,7 @@ sources/1 = SubResource("TileSetAtlasSource_coq8p")
 [sub_resource type="TileSet" id="TileSet_7cbxl"]
 
 [node name="TestScene" type="Node2D" unique_id=1841582524]
-script = SubResource("GDScript_sasra")
+script = ExtResource("1_coq8p")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1986018500]
 repeat_size = Vector2(1100, 625)
